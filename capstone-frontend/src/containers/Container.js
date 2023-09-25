@@ -42,6 +42,16 @@ const Container = () => {
         fetchAllOrders();
     }
 
+    const decreaseStockLevel = async () => {
+        const response = await fetch(`http://localhost:8080/products/decreaseStockLevel?orderId=${currentOrder.id}`,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type" : "application/json"
+            }})
+        fetchAllOrders();
+    }
+
     useEffect ( () => {
         fetchAllOrders();
     }, []);
@@ -62,8 +72,12 @@ return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Homepage />}/>
-        <Route path="/OrderListPage" element={<OrderListPage orderList={orderList} updateOrderStatus={updateOrderStatus}/>}/>
-        <Route path="/OrderPage/:id" element={<OrderPage orderList={orderList} updateOrderStatus={updateOrderStatus}/>}/>
+        <Route path="/OrderListPage" element={<OrderListPage orderList={orderList} 
+        updateOrderStatus={updateOrderStatus}
+        truckList={truckList}/>}/>
+        <Route path="/OrderPage/:id" element={<OrderPage orderList={orderList} 
+        updateOrderStatus={updateOrderStatus}
+        decreaseStockLevel={decreaseStockLevel} />}/>
 
       </Routes>
     </div>

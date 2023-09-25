@@ -3,7 +3,7 @@ import { OrderContext } from '../../containers/Container.js';
 import ProductList from "./ProductList";
 import { useParams } from "react-router-dom";
 
-const OrderPage = ({orderList, updateOrderStatus}) => {
+const OrderPage = ({orderList, updateOrderStatus, decreaseStockLevel}) => {
 
     const {currentOrder,setCurrentOrder} = useContext(OrderContext);
 
@@ -20,7 +20,8 @@ const OrderPage = ({orderList, updateOrderStatus}) => {
 
     return(
     <div>
-       {currentOrder?(<ProductList updateOrderStatus={updateOrderStatus}/>):(<p>Loading .....</p>)} 
+       {currentOrder?(<ProductList updateOrderStatus={updateOrderStatus}
+        decreaseStockLevel={decreaseStockLevel}/>):(<p>Loading .....</p>)} 
     </div>)
 }
 

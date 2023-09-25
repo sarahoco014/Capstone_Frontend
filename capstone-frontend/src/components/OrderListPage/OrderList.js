@@ -1,12 +1,14 @@
 import Order from "./Order"
 import { useState, useEffect } from "react"
 
-const OrderList = ({orderList, updateOrderStatus}) => {
+const OrderList = ({orderList, updateOrderStatus, truckList}) => {
     
     const mappedOrders = orderList?.map((order) => {
         return (
         <div className="orders-box" key={order.id}>
-            <Order order={order} updateOrderStatus={updateOrderStatus}/>
+            <Order order={order}
+            updateOrderStatus={updateOrderStatus}
+            truckList={truckList}/>
         </div>)
     })
 

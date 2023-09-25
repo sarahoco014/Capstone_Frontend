@@ -2,14 +2,39 @@ import { useContext } from "react";
 import { Link } from "react-router-dom"
 import { OrderContext } from '../../containers/Container';
 
-const Order = ({order, updateOrderStatus}) => {
+const Order = ({order, updateOrderStatus, truckList}) => {
+
     const {setCurrentOrder}=useContext(OrderContext);
     console.log("hello")
 
-    const handlePackOrder=() =>{
+    const handlePackOrder= async () =>{
         console.log("handling pack order button");
         setCurrentOrder(order);
-        updateOrderStatus(order.id, 1, "ONGOING");
+        const truckId = assignTruck();
+        await updateOrderStatus(order.id, truckId, "ONGOING");
+    }
+
+    console.log(truckList);
+
+    const calculateProductsSumSize = (orderToCalculate) => {
+        let total = 0;
+        orderToCalculate.products.map((product)=>{
+            ((product.size="SMALL")?total+=3 :(product.size="MEDIUM")?total+=7 : total+=10)
+            console.log(total);
+    })
+    return total;
+    
+    }
+
+    const assignTruck = () => {
+        truckList.map((truck) => {
+            let sumOfOrdersOnTruck = truck.orders.map((orderToCalculate) => {
+                calculateProductsSumSize(orderToCalculate);
+            })
+            if ((sumOfOrdersOnTruck + calculateProductsSumSize(order)) < truck.maxCapacity) {
+                return truck.id;
+            }
+        })
     }
 
     return(

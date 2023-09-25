@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import Product from "./Product";
 import { OrderContext } from "../../containers/Container";
 
-const ProductList = ({updateOrderStatus}) => {
+const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
   const { currentOrder } = useContext(OrderContext);
   const [numberOfProductsPacked, setNumberOfProductsPacked] = useState(0);
   const [isOrderComplete, setIsOrderComplete] = useState(false);
@@ -29,6 +29,7 @@ const ProductList = ({updateOrderStatus}) => {
 
   const handleConfirmOrder = () => {
     updateOrderStatus(currentOrder.id, 1, "FINISHED");
+    decreaseStockLevel();
   }
 
   return (
