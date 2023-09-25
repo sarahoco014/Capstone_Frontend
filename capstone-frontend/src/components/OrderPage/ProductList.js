@@ -9,10 +9,10 @@ const ProductList = () => {
         return <p>Loading...</p>;
     }
 
-    const mappedProducts = currentOrder.products.map((product)=>
+    const mappedProducts = currentOrder.products.map((product, index)=>
     {return(
-        <div className="each-product">
-            <Product product={product} key={product.id}/>
+        <div className="each-product" key={index}>
+            <Product product={product} />
         </div>
     )})
 
