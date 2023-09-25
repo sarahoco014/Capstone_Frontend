@@ -4,6 +4,7 @@ import { OrderContext } from '../../containers/Container';
 
 const Order = ({order}) => {
     const {setCurrentOrder}=useContext(OrderContext);
+    console.log("hello")
 
     const handlePackOrder=() =>{
         console.log("handling pack order button")
