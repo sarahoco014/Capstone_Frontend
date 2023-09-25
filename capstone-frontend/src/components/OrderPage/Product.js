@@ -1,26 +1,9 @@
 import { useState , useEffect, useContext} from "react";
 import { OrderContext } from '../../containers/Container';
 
-const Product = ({
-  product,
-  numberOfProductsPacked,
-  setNumberOfProductsPacked,
-  isOrderComplete,
-  handleComplete
-}) => {
+const Product = ({product, numberOfProductsPacked, setNumberOfProductsPacked, isOrderComplete,handleComplete}) => {
   const [isPacked, setIsPacked] = useState(false);
   const {currentOrder}=useContext(OrderContext);
-
-  //   const handleConfirmItem = () => {
-  //     setIsPacked(!isPacked);
-  //     if (isPacked) {
-  //       setNumberOfProductsPacked(numberOfProductsPacked + 1);
-  //       console.log(numberOfProductsPacked);
-  //     } else {
-  //       setNumberOfProductsPacked(numberOfProductsPacked - 1);
-  //       console.log(numberOfProductsPacked);
-  //     }
-  //   };
 
   const handleItemPacked = () => {
     setNumberOfProductsPacked(numberOfProductsPacked + 1);
@@ -64,7 +47,6 @@ const Product = ({
       ) : (
         <button onClick={handleItemUnpacked}>Undo</button>
       )}
-
       {/* report faulty button  */}
     </>
   );

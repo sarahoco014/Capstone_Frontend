@@ -7,8 +7,6 @@ const ProductList = () => {
   const [numberOfProductsPacked, setNumberOfProductsPacked] = useState(0);
   const [isOrderComplete, setIsOrderComplete] = useState(false);
 
-  //   const allPacked = packedStatus.every(status => status === true);
-
   if (!currentOrder || !currentOrder.products) {
     return <p>Loading...</p>;
   }
@@ -28,23 +26,6 @@ const ProductList = () => {
       </div>
     );
   });
-
-  // useEffect(() => {
-  //   checkIsComplete();
-  // }, [numberOfProductsPacked]);
-
-  // const checkIsComplete = () => {
-  //   if (numberOfProductsPacked === currentOrder.products.length) {
-  //     setIsOrderComplete(true);
-  //   }
-  //   if (
-  //     numberOfProductsPacked < currentOrder.products.length &&
-  //     isOrderComplete === true
-  //   ) {
-  //     setIsOrderComplete(false);
-  //   }
-  // };
-  
 
   return (
     <>
