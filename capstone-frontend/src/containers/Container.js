@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+
 const Container = () => {
     const [orderList, setOrderList, employee, setEmployee, truckList, setTruckList] = useState([]);
 
@@ -37,8 +38,9 @@ const Container = () => {
 return (
     <>
     <Homepage/>
-    <OrderListPage/>
+    <OrderListPage orderList={orderList}/>
     <OrderPage/>
+    
     </>
 
 );
