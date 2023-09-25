@@ -1,4 +1,4 @@
-
+import OrderList from "./OrderList"
 
 const OrderListPage = ({orderList}) => {
     return (

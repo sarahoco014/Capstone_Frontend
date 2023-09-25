@@ -1,3 +1,5 @@
+import Order from "./Order"
+
 const OrderList = ({orders, orderList}) => {
 
     const mappedOrders = orderList.map((order) => {

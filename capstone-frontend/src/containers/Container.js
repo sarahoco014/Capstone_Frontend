@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, createContext } from "react";
+import Homepage from "../components/HomePage/Homepage";
+import OrderListPage from "../components/OrderListPage/OrderListPage";
+import OrderPage from "../components/OrderPage/OrderPage";
 
 const Container = () => {
-    const [orderList, setOrderList, employee, setEmployee, truckList, setTruckList] = useState([]);
+    const [orderList, setOrderList, employee, setEmployee, truckList, setTruckList, currentOrder, setCurrentOrder] = useState([]);
+    const OrderContext= createContext(null)
 
     const fetchAllOrders = async () => {
         const response = await fetch("http://localhost:8080/orders")
@@ -34,16 +37,15 @@ const Container = () => {
         fetchEmployee();
     }, []);
 
+    const contextValue={currentOrder,setCurrentOrder}
 
 return (
-    <>
+    <><OrderContext.Provider value={contextValue}>
     <Homepage/>
     <OrderListPage orderList={orderList}/>
-    <OrderPage/>
-    
-    </>
-
-);
+    <OrderPage orderList={orderList}/>
+    </OrderContext.Provider></>
+    );
 }
 
 export default Container;
