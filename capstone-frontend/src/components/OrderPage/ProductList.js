@@ -12,7 +12,9 @@ const ProductList = () => {
   if (!currentOrder || !currentOrder.products) {
     return <p>Loading...</p>;
   }
-
+  const handleComplete = () => {
+      setIsOrderComplete(!isOrderComplete)
+    }
   const mappedProducts = currentOrder.products.map((product, index) => {
     return (
       <div className="each-product" key={index}>
@@ -20,26 +22,29 @@ const ProductList = () => {
           product={product}
           numberOfProductsPacked={numberOfProductsPacked}
           setNumberOfProductsPacked={setNumberOfProductsPacked}
+          isOrderComplete={isOrderComplete}
+          handleComplete={handleComplete}
         />
       </div>
     );
   });
 
-  useEffect(() => {
-    checkIsComplete();
-  }, [numberOfProductsPacked]);
+  // useEffect(() => {
+  //   checkIsComplete();
+  // }, [numberOfProductsPacked]);
 
-  const checkIsComplete = () => {
-    if (numberOfProductsPacked === currentOrder.products.length) {
-      setIsOrderComplete(true);
-    }
-    if (
-      numberOfProductsPacked < currentOrder.products.length &&
-      isOrderComplete === true
-    ) {
-      setIsOrderComplete(false);
-    }
-  };
+  // const checkIsComplete = () => {
+  //   if (numberOfProductsPacked === currentOrder.products.length) {
+  //     setIsOrderComplete(true);
+  //   }
+  //   if (
+  //     numberOfProductsPacked < currentOrder.products.length &&
+  //     isOrderComplete === true
+  //   ) {
+  //     setIsOrderComplete(false);
+  //   }
+  // };
+  
 
   return (
     <>

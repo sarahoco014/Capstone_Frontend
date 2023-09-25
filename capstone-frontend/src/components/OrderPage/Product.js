@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState , useEffect, useContext} from "react";
+import { OrderContext } from '../../containers/Container';
 
 const Product = ({
   product,
   numberOfProductsPacked,
   setNumberOfProductsPacked,
+  isOrderComplete,
+  handleComplete
 }) => {
   const [isPacked, setIsPacked] = useState(false);
+  const {currentOrder}=useContext(OrderContext);
 
   //   const handleConfirmItem = () => {
   //     setIsPacked(!isPacked);
@@ -28,6 +32,22 @@ const Product = ({
     setIsPacked(false);
     setNumberOfProductsPacked(numberOfProductsPacked - 1);
     console.log(numberOfProductsPacked);
+  };
+
+  useEffect(() => {
+    checkIsComplete();
+  }, [numberOfProductsPacked]);
+
+  const checkIsComplete = () => {
+    if (numberOfProductsPacked === currentOrder.products.length) {
+      handleComplete();
+    }
+    if (
+      numberOfProductsPacked < currentOrder.products.length &&
+      isOrderComplete === true
+    ) {
+      handleComplete();
+    }
   };
 
   return (
