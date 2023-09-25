@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Link } from "react-router-dom"
 import { OrderContext } from '../../containers/Container';
 
-const Order = ({order}) => {
+const Order = ({order, updateOrderStatus}) => {
     const {setCurrentOrder}=useContext(OrderContext);
     console.log("hello")
 
     const handlePackOrder=() =>{
-        console.log("handling pack order button")
-        setCurrentOrder(order)
+        console.log("handling pack order button");
+        setCurrentOrder(order);
+        updateOrderStatus(order.id, 1, "ONGOING");
     }
 
     return(

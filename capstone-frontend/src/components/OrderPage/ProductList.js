@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import Product from "./Product";
 import { OrderContext } from "../../containers/Container";
 
-const ProductList = () => {
+const ProductList = ({updateOrderStatus}) => {
   const { currentOrder } = useContext(OrderContext);
   const [numberOfProductsPacked, setNumberOfProductsPacked] = useState(0);
   const [isOrderComplete, setIsOrderComplete] = useState(false);
@@ -27,11 +27,15 @@ const ProductList = () => {
     );
   });
 
+  const handleConfirmOrder = () => {
+    updateOrderStatus(currentOrder.id, 1, "FINISHED");
+  }
+
   return (
     <>
       {mappedProducts}
       {isOrderComplete ? (
-        <button>Confirmed</button>
+        <button onClick={() => handleConfirmOrder()}>Confirmed</button>
       ) : (
         "Please pack all the products"
       )}

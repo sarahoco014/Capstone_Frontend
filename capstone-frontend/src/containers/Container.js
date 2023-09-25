@@ -30,6 +30,18 @@ const Container = () => {
         setTruckList(data);
     }
 
+    const updateOrderStatus = async (orderId, truckId, status) => {
+        const response = await fetch(`http://localhost:8080/orders/updateOrderStatus?orderId=${orderId}
+                                        &employeeId=1&truckId=${truckId}&status=${status}`, {
+                                            method: "PATCH",
+                                            headers: {
+                                                "Content-Type" : "application/json"
+                                            }
+                                            
+                                        })
+        fetchAllOrders();
+    }
+
     useEffect ( () => {
         fetchAllOrders();
     }, []);
@@ -50,8 +62,8 @@ return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Homepage />}/>
-        <Route path="/OrderListPage" element={<OrderListPage orderList={orderList}/>}/>
-        <Route path="/OrderPage/:id" element={<OrderPage orderList={orderList}/>}/>
+        <Route path="/OrderListPage" element={<OrderListPage orderList={orderList} updateOrderStatus={updateOrderStatus}/>}/>
+        <Route path="/OrderPage/:id" element={<OrderPage orderList={orderList} updateOrderStatus={updateOrderStatus}/>}/>
 
       </Routes>
     </div>

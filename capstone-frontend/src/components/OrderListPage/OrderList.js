@@ -1,12 +1,12 @@
 import Order from "./Order"
 import { useState, useEffect } from "react"
 
-const OrderList = ({orderList}) => {
+const OrderList = ({orderList, updateOrderStatus}) => {
     
     const mappedOrders = orderList?.map((order) => {
         return (
         <div className="orders-box" key={order.id}>
-            <Order order={order} />
+            <Order order={order} updateOrderStatus={updateOrderStatus}/>
         </div>)
     })
 
