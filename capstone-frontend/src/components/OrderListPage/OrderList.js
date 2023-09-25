@@ -1,15 +1,21 @@
 import Order from "./Order"
+import { useState } from "react"
 
-const OrderList = ({orders, orderList}) => {
-
-    const mappedOrders = orderList.map((order) => {
-        <div>
-            <Order order={order} key={order.id}/>
+const OrderList = ({orderList}) => {
+    // const [clonedList, setClonedList]= useState([])
+    // setClonedList([...orderList])
+    
+    const mappedOrders = orderList?.map((order) => {
+        <div className="orders-box" key={order.id}>
+            <Order order={order} />
         </div>
     })
+
+
     return(
         <div>
-            {mappedOrders}
+            <p>hello world on order list page</p>
+            <p>{mappedOrders}</p>
         </div>
     );
 

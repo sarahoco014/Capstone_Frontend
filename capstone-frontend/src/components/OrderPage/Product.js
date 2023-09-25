@@ -1,5 +1,5 @@
 const Product = ({product}) => {
-
+    console.log(product)
     return(
         <>
         <p>{product.name}</p>

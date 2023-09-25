@@ -8,7 +8,7 @@ import Container from './containers/Container';
 function App() {
   return (
     <Container>
-    <BrowserRouter>
+    {/* <BrowserRouter>
     <div className="App">
       <Routes>
         <Route path="/" element={<Homepage />}/>
@@ -20,7 +20,7 @@ function App() {
   
 
     </div>
-    </BrowserRouter>
+    </BrowserRouter> */}
     </Container>
   );
 }
