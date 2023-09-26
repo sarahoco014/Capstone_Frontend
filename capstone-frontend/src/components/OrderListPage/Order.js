@@ -25,29 +25,28 @@ const Order = ({ order, updateOrderStatus, truckList }) => {
     });
     return total;
   };
-
+  
   const assignTruck = () => {
-    //keep track of the totalSumSize, of the most filled truck.
     let maxSumOfOrders = 0;
-    // keeps track of the most optimum truck found in map so far (highest total sum size)
     let selectedTruckId = null;
-
-    truckList.map((truck) => {
+  
+    for (let i = 0; i < truckList.length; i++) {
+      const truck = truckList[i];
       let sumOfOrdersOnTruck = 0;
-      for (let i = 0; i < truck.orders.length; i++) {
-        sumOfOrdersOnTruck += calculateProductsSumSize(truck.orders[i]);
+  
+      for (let j = 0; j < truck.orders.length; j++) {
+        sumOfOrdersOnTruck += calculateProductsSumSize(truck.orders[j]);
       }
-
-      // after sumOfOrdersOnTruck is calculated it checks if the order can fit in truck as well as checking if this "truck" is the most optimum truck available.
+  
       if (
-        sumOfOrdersOnTruck + calculateProductsSumSize(order) <=
-          truck.maxCapacity &&
-        sumOfOrdersOnTruck > maxSumOfOrders
+        sumOfOrdersOnTruck + calculateProductsSumSize(order) <= truck.maxCapacity &&
+        sumOfOrdersOnTruck >= maxSumOfOrders
       ) {
         maxSumOfOrders = sumOfOrdersOnTruck;
         selectedTruckId = truck.id;
       }
-    });
+    }
+  
     return selectedTruckId;
   };
 
