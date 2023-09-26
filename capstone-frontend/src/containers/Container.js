@@ -3,6 +3,7 @@ import Homepage from "../components/HomePage/Homepage";
 import OrderListPage from "../components/OrderListPage/OrderListPage";
 import OrderPage from "../components/OrderPage/OrderPage";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Sidebar from "../components/HomePage/Sidebar";
 
 const Container = () => {
     const [orderList, setOrderList] = useState([]);
@@ -70,6 +71,7 @@ return (
     <><OrderContext.Provider value={contextValue}>
     <BrowserRouter>
     <div className="App">
+        <Sidebar/>
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/OrderListPage" element={<OrderListPage orderList={orderList} 
