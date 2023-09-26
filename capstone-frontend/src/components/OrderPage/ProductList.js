@@ -1,11 +1,13 @@
 import { useState, useContext, useEffect } from "react";
 import Product from "./Product";
 import { OrderContext } from "../../containers/Container";
+import { useNavigate } from "react-router-dom";
 
 const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
   const { currentOrder } = useContext(OrderContext);
   const [numberOfProductsPacked, setNumberOfProductsPacked] = useState(0);
   const [isOrderComplete, setIsOrderComplete] = useState(false);
+  const navigate = useNavigate();
 
   if (!currentOrder || !currentOrder.products) {
     return <p>Loading...</p>;
@@ -27,9 +29,12 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
     );
   });
 
+
+
   const handleConfirmOrder = () => {
     updateOrderStatus(currentOrder.id, 1, "FINISHED");
     decreaseStockLevel();
+    navigate("/OrderListPage");
   }
 
   return (
