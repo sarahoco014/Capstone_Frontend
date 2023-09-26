@@ -4,6 +4,7 @@ import OrderListPage from "../components/OrderListPage/OrderListPage";
 import OrderPage from "../components/OrderPage/OrderPage";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Sidebar from "../components/HomePage/Sidebar";
+import Box from '@mui/material/Box';
 
 const Container = () => {
     const [orderList, setOrderList] = useState([]);
@@ -67,11 +68,42 @@ const Container = () => {
 
     const contextValue={currentOrder,setCurrentOrder}
 
+//     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+//   const handleSidebarOpen = () => {
+//     setIsSidebarOpen(true);
+//   };
+
+//   const handleSidebarClose = () => {
+//     setIsSidebarOpen(false);
+//   };
+  const [open, setOpen] = useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
 return (
     <><OrderContext.Provider value={contextValue}>
     <BrowserRouter>
     <div className="App">
-        <Sidebar/>
+        <Sidebar    open={open}
+          handleDrawerOpen={handleDrawerOpen}
+          handleDrawerClose={handleDrawerClose}/>
+        <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          transition: 'margin-left 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms',
+          marginTop: '40px' ,
+          marginLeft: open ? `240px` : `64px`, // Adjust the margin as needed
+        }}
+      >
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/OrderListPage" element={<OrderListPage orderList={orderList} 
@@ -81,12 +113,9 @@ return (
         updateOrderStatus={updateOrderStatus}
         decreaseStockLevel={decreaseStockLevel} />}/>
 
-      </Routes>
+      </Routes></Box>
     </div>
     </BrowserRouter>
-    {/* <Homepage/>
-    <OrderListPage orderList={orderList}/>
-    <OrderPage orderList={orderList}/> */}
     </OrderContext.Provider></>
     );
 }
