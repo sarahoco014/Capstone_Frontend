@@ -29,7 +29,14 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
 import AccessibilityNewOutlinedIcon from "@mui/icons-material/AccessibilityNewOutlined";
-import { Link, ConditionalLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+function ConditionalLink({ to, condition, children }) {
+  if (condition) {
+    return <Link to={to}>{children}</Link>;
+  }
+  return <>{children}</>;
+}
 
 const drawerWidth = 240;
 
@@ -140,14 +147,14 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
             <Link to="/">Homepage</Link>,
             <Link to="/OrderListPage">Orders</Link>,
             <ConditionalLink
-              to={`/OrderPage/${currentOrder.id}`}
-              condition={currentOrder}
+              to={`/OrderPage/${currentOrder?.id}`}
+              condition={!!currentOrder}
             >
               Current Order
             </ConditionalLink>,
             <Link to="/">Trucks</Link>,
           ].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+            <ListItem key={index} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
