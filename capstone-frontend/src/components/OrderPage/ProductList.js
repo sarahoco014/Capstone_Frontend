@@ -4,7 +4,7 @@ import { OrderContext } from "../../containers/Container";
 import { useNavigate } from "react-router-dom";
 
 const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
-  const { currentOrder } = useContext(OrderContext);
+  const { currentOrder, setCurrentOrder } = useContext(OrderContext);
   const [numberOfProductsPacked, setNumberOfProductsPacked] = useState(0);
   const [isOrderComplete, setIsOrderComplete] = useState(false);
   const navigate = useNavigate();
@@ -35,11 +35,14 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
     updateOrderStatus(currentOrder.id, 1, "FINISHED");
     decreaseStockLevel();
     navigate("/OrderListPage");
+    setCurrentOrder(null);
+
   }
 
   return (
     <>
       {mappedProducts}
+      {currentOrder?currentOrder.truckId: "Loading..."}
       {isOrderComplete ? (
         <button onClick={() => handleConfirmOrder()}>Confirmed</button>
       ) : (
