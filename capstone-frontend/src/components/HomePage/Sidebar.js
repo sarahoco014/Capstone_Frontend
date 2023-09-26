@@ -19,6 +19,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import TakeoutDiningOutlinedIcon from "@mui/icons-material/TakeoutDiningOutlined";
 import ReceiptLongOutlinedIcon from "@mui/icons-material/ReceiptLongOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
@@ -33,7 +34,17 @@ import { Link } from "react-router-dom";
 
 function ConditionalLink({ to, condition, children }) {
   if (condition) {
-    return <Link to={to}>{children}</Link>;
+    return (
+      <Link
+        style={{
+          textDecoration: "none",
+          color: "inherit",
+        }}
+        to={to}
+      >
+        {children}
+      </Link>
+    );
   }
   return <>{children}</>;
 }
@@ -144,22 +155,54 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
         <Divider />
         <List>
           {[
-            <Link to="/">Homepage</Link>,
-            <Link to="/OrderListPage">Orders</Link>,
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+              to="/"
+            >
+              Homepage
+            </Link>,
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+              to="/OrderListPage"
+            >
+              Orders
+            </Link>,
             <ConditionalLink
               to={`/OrderPage/${currentOrder?.id}`}
               condition={!!currentOrder}
             >
               Current Order
             </ConditionalLink>,
-            <Link to="/">Trucks</Link>,
+            <Link
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+              to="/"
+            >
+              Trucks
+            </Link>,
           ].map((text, index) => (
-            <ListItem key={index} disablePadding sx={{ display: "block" }}>
+            <ListItem
+              key={index}
+              disablePadding
+              sx={{
+                display: "block",
+                disableUnderline: true,
+              }}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
+                  disableUnderline: true,
                 }}
               >
                 <ListItemIcon
@@ -170,13 +213,42 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
                   }}
                 >
                   {index === 0 ? (
-                    <HomeOutlinedIcon />
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                      }}
+                      to="/"
+                    >
+                      <HomeOutlinedIcon />
+                    </Link>
                   ) : index === 1 ? (
-                    <ReceiptLongOutlinedIcon />
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                      }}
+                      to="/OrderListPage"
+                    >
+                      <ReceiptLongOutlinedIcon />
+                    </Link>
                   ) : index === 2 ? (
-                    <ReceiptLongOutlinedIcon />
+                    <ConditionalLink
+                      to={`/OrderPage/${currentOrder?.id}`}
+                      condition={!!currentOrder}
+                    >
+                      <TakeoutDiningOutlinedIcon />
+                    </ConditionalLink>
                   ) : (
-                    <LocalShippingOutlinedIcon />
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                      }}
+                      to="/"
+                    >
+                      <LocalShippingOutlinedIcon />
+                    </Link>
                   )}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
@@ -187,7 +259,7 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
         <Divider />
         <List>
           {["Tutorial", "Help & FAQ"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+            <ListItem key={index} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
