@@ -68,8 +68,11 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
 
   return (
     <>
+    <div className="order-and-truck-id" >
+    <h2 className="order-id">Order Id : {currentOrder.id} </h2>
+    {currentOrder? (<p className="truck-id">Assigned Truck {currentOrder.truck.id}</p>):
+    (<p className="truck-id">Loading...</p>)}</div>
       {mappedProducts}
-      {currentOrder?currentOrder.truckId: "Loading..."}
       {isOrderComplete ? (
         <button onClick={() => handleConfirmOrder()}>Confirmed</button>
       ) : (

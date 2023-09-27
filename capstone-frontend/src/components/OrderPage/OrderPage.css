@@ -1,14 +1,38 @@
+.order-and-truck-id {
+    display :grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.order-id {
+    grid-column: 1;
+}
+
+.truck-id {
+    grid-column: 2;
+    margin-inline-start: auto;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 120px;
+    word-wrap: break-word;
+    text-align: center;
+    font-size: x-large;
+}
+
 .each-product {
     display: grid;
     border: 2px solid black;
     border-radius: 6px;
     margin: 10px;
     padding: 10px;
-    grid-template-columns: 30% 40% 30%;
+    grid-template-columns: 32% 38% 30%;
     grid-template-rows: 25% 20% 20% 20% 15%;
     gap:10px;
     justify-content: space-evenly;
     align-content: space-evenly;
+    @media (max-width: 768px) {
+        padding:5px;
+        font-size: small;
+      }
 }
 
 .product-name {
@@ -17,12 +41,35 @@
 
 }
 
-.product-images {
+.enlarge-image {
     grid-column: 1;
     grid-row: 2 / span 3;
     align-content: center;
     margin-left: 30px;
+    margin-top: -20px;
+    position: relative;
 }
+.enlarge-image img{
+    display: block;
+    @media (max-width: 1300px) {
+        width:80% /* Adjust the size for smaller screens */
+      }
+}
+.expand-icon { 
+    position: absolute;
+    top:0%;
+    right:50%;  
+    font-weight: bold;
+    @media (max-width: 768px) {
+        padding:5px;
+        top:70%;
+        left:20%; /* Adjust the size for smaller screens */
+      }
+    @media (max-width: 1300px) {
+        right:15%; /* Adjust the size for smaller screens */
+    }
+}
+
 
 .product-category {
     grid-column: 2;
@@ -78,7 +125,10 @@
     font-size: large;
     background-color: #6C744A;
     border-radius: 6px;
-    
+    @media (max-width: 768px) {
+        padding:5px;
+        font-size: small;
+      }
 }
 
 

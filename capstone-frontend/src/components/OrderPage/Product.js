@@ -1,6 +1,7 @@
 import { useState , useEffect, useContext} from "react";
 import { OrderContext } from '../../containers/Container';
-import "./OrderPage.css"
+import "./OrderPage.css";
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 
 const Product = ({product, numberOfProductsPacked, setNumberOfProductsPacked, isOrderComplete,handleComplete}) => {
   const [isPacked, setIsPacked] = useState(false);
@@ -38,7 +39,9 @@ const Product = ({product, numberOfProductsPacked, setNumberOfProductsPacked, is
     <div className="each-product">
       <h3 className="product-name">{product.name}</h3>
       {/* <img  src={`/productImages/${product.imageURL}`} width="200px" height="200px" /> */}
-      <img className="product-images" src={product.imageURL} width="200px" />
+      <div className="enlarge-image">
+      <OpenInFullIcon className="expand-icon"/>
+      <img className="product-images" src={product.imageURL} width="50%"  height={"auto"} /></div>
       <p className="product-category">{product.category}</p>
       <p className="product-location">Location in warehouse: {product.productLocation}</p>
       <div className="attributes">

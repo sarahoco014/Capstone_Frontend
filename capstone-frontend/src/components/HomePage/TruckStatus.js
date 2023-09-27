@@ -2,8 +2,8 @@ import Truck from "./Truck"
 
 const TruckStatus = ({truckList}) => {
 
-    const mappedTrucks = truckList.map((truck) => {
-        return <Truck truck={truck} />
+    const mappedTrucks = truckList.map((truck, index) => {
+        return <Truck truck={truck} key={index} />
         
     })
    
