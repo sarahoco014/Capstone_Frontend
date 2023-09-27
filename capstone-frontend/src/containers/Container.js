@@ -105,7 +105,7 @@ return (
         }}
       >
       <Routes>
-        <Route path="/" element={<Homepage />}/>
+        <Route path="/" element={<Homepage truckList={truckList} />}/>
         <Route path="/OrderListPage" element={<OrderListPage orderList={orderList} 
         updateOrderStatus={updateOrderStatus}
         truckList={truckList}/>}/>
