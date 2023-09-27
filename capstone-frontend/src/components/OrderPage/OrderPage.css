@@ -5,13 +5,13 @@
     margin: 10px;
     padding: 10px;
     grid-template-columns: 30% 40% 30%;
-    grid-template-rows: repeat(5,1fr);
-    gap:0;
-    
+    grid-template-rows: 25% 20% 20% 20% 15%;
+    gap:10px;
 }
 
 .product-name {
     grid-column: 1 / span 2;
+
 }
 
 .product-images {
@@ -25,7 +25,7 @@
     grid-row: 3;
     border: solid 2px black;
     border-radius: 5px;
-    padding: 1px;
+    padding: 2px;
     text-align: center;
 }
 
@@ -34,9 +34,8 @@
     grid-row: 2;
     border: solid 2px black;
     border-radius: 5px;
-    padding: 1px;
+    padding: 2px;
     text-align: center;
-    
 } 
 
 .attributes {
@@ -53,24 +52,23 @@
 
 .attributes p {
     display: inline-block;
-    margin: 0; /* Optionally remove any default margin for <p> tags */
     justify-content: space-between;
     margin: 0 5px
   }
 
 .product-packed-button {
     grid-column: 3;
-    grid-row: 4;
+    grid-row: 4 / span 1;
     width: fit-content;
     height: fit-content;
     font-size: larger;
     margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    
 }
 
-.undo-packed-button {
-    grid-column: 3;
-    grid-row: 4;
-}
+
 
 
 
