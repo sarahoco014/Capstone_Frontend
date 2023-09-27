@@ -97,6 +97,7 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
+  backgroundColor:"#A9B47A"
 }));
 
 const Drawer = styled(MuiDrawer, {
@@ -124,7 +125,7 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar backgroundColor="#A9B47A">
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -138,7 +139,7 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            Warehouse Management System 
           </Typography>
         </Toolbar>
       </AppBar>

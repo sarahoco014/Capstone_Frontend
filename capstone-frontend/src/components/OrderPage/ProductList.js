@@ -8,14 +8,43 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
   const [numberOfProductsPacked, setNumberOfProductsPacked] = useState(0);
   const [isOrderComplete, setIsOrderComplete] = useState(false);
   const navigate = useNavigate();
+  const [sortedProductList, setSortedProductList] = useState([])
+
+
+  const sortProductList = () =>{ 
+        if (!currentOrder || !currentOrder.products) {
+            return <p>Loading...</p>;
+        }
+        const clonedProductList= [...currentOrder.products];
+        clonedProductList.sort((product1,product2)=>{
+            const number1=product1.productLocation.substring(1);
+            const number2=product2.productLocation.substring(1);
+            return number2-number1; // sorts number location in decending order.
+            //(after it being alphabetically cloned)
+        })
+        clonedProductList.sort((product1,product2)=>{
+            const charcode1=product1.productLocation.charCodeAt(0);
+            const charcode2=product2.productLocation.charCodeAt(0);
+            return charcode1-charcode2;// sorts from A-Z
+        })
+        setSortedProductList(clonedProductList)
+    }
+
+    useEffect(() => {
+        sortProductList();
+    }, [currentOrder]);
 
   if (!currentOrder || !currentOrder.products) {
     return <p>Loading...</p>;
   }
+
+
   const handleComplete = () => {
       setIsOrderComplete(!isOrderComplete)
-    }
-  const mappedProducts = currentOrder.products.map((product, index) => {
+  }
+
+  // to not sort change sortedProductList to currentOrder.products
+  const mappedProducts = sortedProductList.map((product, index) => {
     return (
       <div className="each-product" key={index}>
         <Product

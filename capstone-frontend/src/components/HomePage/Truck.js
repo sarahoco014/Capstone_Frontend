@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import TruckStatus from './TruckStatus';
 
 export default function Truck({truck}) {
 
@@ -11,10 +10,10 @@ export default function Truck({truck}) {
         let total = 0;
         orderToCalculate.products.map((product) => {
           product.size === "SMALL"
-            ? (total += 3)
+            ? (total += 10)
             : product.size === "MEDIUM"
-            ? (total += 7)
-            : (total += 10);
+            ? (total += 15)
+            : (total += 20);
         });
         return total;
       };
@@ -56,6 +55,8 @@ Truck.propTypes = {
   }).isRequired,
 };
 
+
+// come back to this.
 function TruckProgressBar() {
   const [progress, setProgress] = React.useState(10);
 

@@ -1,9 +1,9 @@
 import OrderList from "./OrderList"
+import "./OrderListPage.css";
 
 const OrderListPage = ({orderList, updateOrderStatus, truckList}) => {
     return (
         <>
-        <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
         <OrderList orderList={orderList} updateOrderStatus={updateOrderStatus} truckList={truckList}/>
         </>
     )

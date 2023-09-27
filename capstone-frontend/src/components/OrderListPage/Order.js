@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { OrderContext } from "../../containers/Container";
+import "./OrderListPage.css";
+import Button from "@mui/material/Button";
 
 const Order = ({ order, updateOrderStatus, truckList }) => {
   const { setCurrentOrder } = useContext(OrderContext);
@@ -8,8 +10,9 @@ const Order = ({ order, updateOrderStatus, truckList }) => {
   const handlePackOrder = () => {
     console.log("handling pack order button");
     setCurrentOrder(order);
+    if(order.status ==="UNFULFILLED" || order.status ==="ONHOLD"){
     const truckId = assignTruck();
-    updateOrderStatus(order.id, truckId, "ONGOING");
+    updateOrderStatus(order.id, truckId, "ONGOING");}
   };
 
   console.log(truckList);
@@ -18,10 +21,10 @@ const Order = ({ order, updateOrderStatus, truckList }) => {
     let total = 0;
     orderToCalculate.products.map((product) => {
       product.size === "SMALL"
-        ? (total += 3)
+        ? (total += 10)
         : product.size === "MEDIUM"
-        ? (total += 7)
-        : (total += 10);
+        ? (total += 15)
+        : (total += 20);
     });
     return total;
   };
@@ -52,15 +55,16 @@ const Order = ({ order, updateOrderStatus, truckList }) => {
 
   return (
     <>
-      <p>{order.id}</p>
-      <p>{order.orderPriority ? "priority" : "non-priority"}</p>
-      <p>{order.date}</p>
+      <h4 className="order-number-tag">Order Number : {order.id}</h4>
+      <p className="number-of-products">Number of Products : {order.products.length}</p>
+      <p className="date-placed-tag">Date Placed : {order.date}</p>
+      {order.orderPriority ? <p className="priority-tag">Priority</p> :<p className="non-priority-tag">Non-Priority</p>}
       {order.status !== "FINISHED" ? (
         <Link to={`/OrderPage/${order.id}`}>
-          <button onClick={() => handlePackOrder()}>Pack Order</button>
+          <button className="pack-order-button" onClick={() => handlePackOrder()}>Pack Order</button>
         </Link>
       ) : (
-        "order completed"
+        <p className="order-completed-tag">Order Completed</p>
       )}
     </>
   );
