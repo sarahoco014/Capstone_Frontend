@@ -70,7 +70,7 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
     <>
     <div className="order-and-truck-id" >
     <h2 className="order-id">Order Id : {currentOrder.id} </h2>
-    {currentOrder? (<p className="truck-id">Assigned Truck {currentOrder.truck.id}</p>):
+    {currentOrder? (<p className="truck-id">Assigned&nbsp;Truck {currentOrder.truck.id}</p>):
     (<p className="truck-id">Loading...</p>)}</div>
       {mappedProducts}
       {isOrderComplete ? (
