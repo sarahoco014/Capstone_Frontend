@@ -4,9 +4,10 @@
     border-radius: 6px;
     margin: 10px;
     padding: 10px;
-    grid-template-columns: 40% 30% 30%;
+    grid-template-columns: 30% 40% 30%;
     grid-template-rows: repeat(5,1fr);
     gap:0;
+    
 }
 
 .product-name {
@@ -15,27 +16,55 @@
 
 .product-images {
     grid-column: 1;
-    grid-row: 2 / span 3
+    grid-row: 2 / span 3;
+    align-content: center;
 }
 
 .product-category {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 3;
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 1px;
+    text-align: center;
 }
 
 .product-location {
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 2;
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 1px;
+    text-align: center;
+    
 } 
 
 .attributes {
     grid-column: 2;
     grid-row: 4;
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 1px;
+    text-align: center;
+    height: fit-content;
+ 
+
 }
+
+.attributes p {
+    display: inline-block;
+    margin: 0; /* Optionally remove any default margin for <p> tags */
+    justify-content: space-between;
+    margin: 0 5px
+  }
 
 .product-packed-button {
     grid-column: 3;
     grid-row: 4;
+    width: fit-content;
+    height: fit-content;
+    font-size: larger;
+    margin-left: auto;
 }
 
 .undo-packed-button {

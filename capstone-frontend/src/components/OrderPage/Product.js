@@ -37,18 +37,27 @@ const Product = ({product, numberOfProductsPacked, setNumberOfProductsPacked, is
   return (
     <div className="each-product">
       <p className="product-name">{product.name}</p>
-      <img className="product-images" src={`/productImages/${product.imageURL}`} width="200px" height="200px" />
+      {/* <img  src={`/productImages/${product.imageURL}`} width="200px" height="200px" /> */}
+      <img className="product-images" src={product.imageURL} width="150px" />
       <p className="product-category">{product.category}</p>
       <p className="product-location">Location in warehouse: {product.productLocation}</p>
       <div className="attributes">
-        {product.heavy && <p>heavy</p>}
-        {product.fragile && <p>fragile</p>}
-        {product.flammable && <p>flammable</p>}
-      </div>
+        {product.heavy || product.fragile || product.flammable ? (
+          <div>
+            {product.heavy && <p>heavy</p>}
+            {product.fragile && <p>fragile</p>}
+            {product.flammable && <p>flammable</p>}
+          </div>
+      ) : (
+        <p>No notes on this product</p>
+        
+      )}
+    </div>
+
       {!isPacked ? (
         <button className="product-packed-button" onClick={handleItemPacked}> Confirm item packed</button>
       ) : (
-        <button className="product-undo-button" onClick={handleItemUnpacked}>Undo</button>
+        <button className="product-packed-button" onClick={handleItemUnpacked}>Undo</button>
       )}
     </div>
   );
