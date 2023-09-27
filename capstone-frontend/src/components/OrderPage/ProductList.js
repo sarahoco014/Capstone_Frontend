@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import Product from "./Product";
 import { OrderContext } from "../../containers/Container";
 import { useNavigate } from "react-router-dom";
+import "./OrderPage.css"
 
 const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
   const { currentOrder, setCurrentOrder } = useContext(OrderContext);
@@ -46,7 +47,7 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
   // to not sort change sortedProductList to currentOrder.products
   const mappedProducts = sortedProductList.map((product, index) => {
     return (
-      <div className="each-product" key={index}>
+      <div key={index}>
         <Product
           product={product}
           numberOfProductsPacked={numberOfProductsPacked}
