@@ -24,18 +24,20 @@ export default function Truck({truck}) {
         for (let j = 0; j < truck.orders.length; j++) {
           sumOfOrdersOnTruck += calculateProductsSumSize(truck.orders[j]);
         }
+        return sumOfOrdersOnTruck;
 
     }
 
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress variant="determinate" value = {truck.maxCapacity} />
+      <Box sx={{ width: '30%', mr: 1}}>
+        <Typography>Truck : {truck.id}</Typography>
+        <LinearProgress variant="determinate" value={calculateFilledTruck()} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(
-          calculateFilledTruck(),
+          (calculateFilledTruck()/truck.maxCapacity)*100
         )}%`}</Typography>
       </Box>
     </Box>
@@ -47,7 +49,11 @@ Truck.propTypes = {
    * The value of the progress indicator for the determinate and buffer variants.
    * Value between 0 and 100.
    */
-  value: PropTypes.number.isRequired,
+  truck: PropTypes.shape({
+    orders: PropTypes.arrayOf(PropTypes.object),
+    maxCapacity: PropTypes.number,
+    // Add other properties as needed
+  }).isRequired,
 };
 
 function TruckProgressBar() {

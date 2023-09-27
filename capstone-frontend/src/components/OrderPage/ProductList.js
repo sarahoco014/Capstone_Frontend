@@ -29,14 +29,11 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
     );
   });
 
-
-
   const handleConfirmOrder = () => {
     updateOrderStatus(currentOrder.id, 1, "FINISHED");
     decreaseStockLevel();
     navigate("/OrderListPage");
     setCurrentOrder(null);
-
   }
 
   return (
