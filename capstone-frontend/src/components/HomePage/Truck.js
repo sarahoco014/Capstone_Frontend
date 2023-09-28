@@ -32,7 +32,7 @@ export default function Truck({truck}) {
 
     useEffect( () => {
       setFilledCapacity(calculateFilledTruck());
-    }, [truck.orders])
+    }, [filledCapacity])
 
 
   return (

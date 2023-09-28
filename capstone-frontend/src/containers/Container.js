@@ -41,6 +41,7 @@ const Container = () => {
                                             
                                         })
         fetchAllOrders();
+        fetchAllTrucks();
         console.log("currentOrder:" + currentOrder);
         }
 
