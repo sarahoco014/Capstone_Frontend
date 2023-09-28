@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useEffect, useState } from 'react';
 
 export default function Truck({truck}) {
+
+  const [filledCapacity, setFilledCapacity] = useState(0);
 
     const calculateProductsSumSize = (orderToCalculate) => {
         let total = 0;
@@ -27,16 +30,20 @@ export default function Truck({truck}) {
 
     }
 
+    useEffect( () => {
+      setFilledCapacity(calculateFilledTruck());
+    }, [truck.orders])
+
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '30%', mr: 1}}>
         <Typography>Truck : {truck.id}</Typography>
-        <LinearProgress variant="determinate" value={calculateFilledTruck()} />
+        <LinearProgress variant="determinate" value={filledCapacity} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(
-          (calculateFilledTruck()/truck.maxCapacity)*100
+          (filledCapacity/truck.maxCapacity)*100
         )}%`}</Typography>
       </Box>
     </Box>
