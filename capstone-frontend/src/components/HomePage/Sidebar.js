@@ -91,6 +91,7 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
+  backgroundColor:"#A9B47A"
 }));
 
 const Drawer = styled(MuiDrawer, {
@@ -118,7 +119,7 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar >
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
