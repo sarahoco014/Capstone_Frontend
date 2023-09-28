@@ -39,14 +39,14 @@ export default function Truck({truck}) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '100%', mr: 1}}>
-        <Typography>Truck : {truck.id}</Typography>
+        <Typography sx={{fontSize:'x-large'}}>Truck : {truck.id}</Typography>
         <LinearProgress variant="determinate" value={filledCapacity} 
-        sx={{height: '20px', borderRadius: '6px', backgroundColor: '#D9D9D9', '&.MuiLinearProgress-bar': { backgroundColor: '#ff5722' }}}/>
+        sx={{height: '20px', borderRadius: '6px', backgroundColor: '#D9D9D9', '& .MuiLinearProgress-bar': { backgroundColor: '#a9b47a' }}}/>
       </Box>
       <Box sx={{ minWidth: 50 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
+        <Typography variant="body2" color="text.secondary" sx={{fontSize:'x-large', marginTop:'35px'}}>{`${Math.round(
           (filledCapacity/truck.maxCapacity)*100
-        )}%`}</Typography>
+        )}%` } </Typography>
       </Box>
     </Box>
   );
