@@ -154,7 +154,7 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
               | Warehouse Management System 
             </Typography>
           </Box>
-          <Box sx={{ display: { xs: 'none', md: 'flex', gap: 2 } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'flex', gap: 2 } }}>
             <IconButton color = "inherit">
               <EmailOutlinedIcon />
             </IconButton>
