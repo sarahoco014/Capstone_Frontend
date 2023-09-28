@@ -34,19 +34,26 @@ const Graph = ({orderList}) => {
      
       };
 
+      const options = {
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    boxWidth: 40,
+                    padding: 30,
+                    font: {
+                        size: 20
+                    }
+                }
+            }
+        }
+    };
 
-    const options = {
-      plugins:{
-          legend: {
-              display: true,
-              position:'right',
-              },
-              labels: {
-                boxWidth: 40,     // Width of the color box
-                fontSize: 50,     // Font size of the label text
-                padding: 10       // Padding between legend entries
-          }
-    }};
+   
+
+
+
 
     return (
        <div> <Doughnut data={data} options={options}/> </div>

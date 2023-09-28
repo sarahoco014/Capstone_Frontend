@@ -1,10 +1,15 @@
 .pie-chart{
-    width: 55%;
+    width: 70%;
     margin-left: 24%;
     margin-bottom: 2%;
 }
 
 .truck-status-bars {
     margin: 15px;
+
+}
+
+.label {
+    font-size: x-large;
 
 }
