@@ -42,6 +42,15 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
 
   const handleComplete = () => {
       setIsOrderComplete(!isOrderComplete)
+
+      if (!isOrderComplete) {
+        //when button switches to confirmed it scroll to bottom of page.
+        setTimeout(()=>{
+          window.scrollTo({
+            top: document.documentElement.scrollHeight, 
+            behavior: "smooth", 
+          })},350)
+      }
   }
 
   // to not sort change sortedProductList to currentOrder.products
@@ -68,16 +77,17 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
 
   return (
     <>
-    <div className="order-and-truck-id" >
-    <h2 className="order-id">Order Id : {currentOrder.id} </h2>
-    {currentOrder? (<p className="truck-id">Assigned&nbsp;Truck {currentOrder.truck.id}</p>):
-    (<p className="truck-id">Loading...</p>)}</div>
+    {/* <div className="order-and-truck-id" > */}
+    {/* {currentOrder ? (<p className="order-id">Order Id : {currentOrder.id} </p>):(<p>Loading...</p>)} */}
+    {/* {currentOrder? (<p className="truck-id">Assigned&nbsp;Truck {currentOrder.truck.id}</p>):
+    (<p className="truck-id">Loading...</p>)}</div> */}
       {mappedProducts}
+      <div className="confirm-tags">
       {isOrderComplete ? (
-        <button onClick={() => handleConfirmOrder()}>Confirmed</button>
+        <div className="confirm-order-button"><button className="confirm-order" onClick={() => handleConfirmOrder()} style={{"color":"#FF8A61"}}>Confirmed</button></div>
       ) : (
-        "Please pack all the products"
-      )}
+        <p className="confirm-order" style={{"background-color":"#A9B47A"}}>Please pack all the products</p>
+      )}</div>
     </>
   );
 };

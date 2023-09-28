@@ -1,3 +1,7 @@
+.body {
+    background-color: #D9D9D9;
+}
+
 .order-and-truck-id {
     display :grid;
     grid-template-columns: 1fr 1fr;
@@ -171,6 +175,8 @@
     position: relative;
     text-align: center;
     max-width: 50%;
+    min-width: 35%;
+    max-height: 90%;
     width: fit-content;
     height: auto;
     transform: translate(-50%, -50%);
@@ -181,7 +187,7 @@
 }
 
 .image-modal-content img{
-    width:90%
+    /* width:90%; */
 }
 
 .image-modal-content figure{
@@ -189,6 +195,7 @@
     flex-flow: column;
     padding: 5px;
     max-width: 90%;
+    max-height: 90%;
     margin: auto;
   }
   
@@ -221,6 +228,41 @@
         font-size: medium;
       }
 }
+
+
+.confirm-order {
+    width: max-content;
+    height: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    margin-top: 16px;
+    border : 2px solid #484449 ;
+    color: #D9D9D9;
+    font-size: xx-large;
+    background-color: #6C744A;
+    border-radius: 6px;
+    @media (max-width: 820px) {
+        padding:5px;
+        font-size: large;
+      }
+}
+
+.confirm-order-button {
+    width: max-content;
+    height: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+}
+
+.confirm-order-button button{
+    font-size: xx-large;
+    border : 4px solid #A9B47A ;
+}
+
+
+
 
 
 
