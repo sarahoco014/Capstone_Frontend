@@ -26,6 +26,7 @@ export default function Truck({truck}) {
         for (let j = 0; j < truck.orders.length; j++) {
           sumOfOrdersOnTruck += calculateProductsSumSize(truck.orders[j]);
         }
+        
         return sumOfOrdersOnTruck;
 
     }
@@ -37,11 +38,12 @@ export default function Truck({truck}) {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ width: '30%', mr: 1}}>
+      <Box sx={{ width: '100%', mr: 1}}>
         <Typography>Truck : {truck.id}</Typography>
-        <LinearProgress variant="determinate" value={filledCapacity} />
+        <LinearProgress variant="determinate" value={filledCapacity} 
+        sx={{height: '20px', borderRadius: '6px', backgroundColor: '#D9D9D9', '&.MuiLinearProgress-bar': { backgroundColor: '#ff5722' }}}/>
       </Box>
-      <Box sx={{ minWidth: 35 }}>
+      <Box sx={{ minWidth: 50 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(
           (filledCapacity/truck.maxCapacity)*100
         )}%`}</Typography>
