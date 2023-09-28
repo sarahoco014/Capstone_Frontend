@@ -24,6 +24,9 @@ import ReceiptLongOutlinedIcon from "@mui/icons-material/ReceiptLongOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import AccessibilityNewOutlinedIcon from "@mui/icons-material/AccessibilityNewOutlined";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import Avatar from '@mui/material/Avatar';
 import { Link } from "react-router-dom";
 
 function ConditionalLink({ to, condition, children }) {
@@ -125,28 +128,48 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box display= "flex" justifyContent="space-between" sx={{
+      p: 2,
+      flexGrow: 1,
+      marginLeft: 8,
+    }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Warehouse Management System 
-          </Typography>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Avatar alt = "logo" src ="./rainforestLogo.png"/>
+            <Typography variant="h6" noWrap component="div" sx={{marginLeft: 1}}>
+              | Warehouse Management System 
+            </Typography>
+          </Box>
+          <Box sx={{ display: { xs: 'none', md: 'flex', gap: 2 } }}>
+            <IconButton color = "inherit">
+              <EmailOutlinedIcon />
+            </IconButton>
+            <IconButton color="inherit">
+              <NotificationsOutlinedIcon />
+            </IconButton >
+            <IconButton color ="inherit">
+              <Avatar alt= "Sandra" />
+            </IconButton>
+          </Box>
+
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
+        
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
