@@ -3,11 +3,13 @@ import { OrderContext } from '../../containers/Container';
 import "./OrderPage.css";
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import EnlargeImageModal from "./EnlargeImageModal";
+import ConfirmOrderModal from "./ConfirmOrderModal";
 
 const Product = ({product, numberOfProductsPacked, setNumberOfProductsPacked, isOrderComplete,handleComplete}) => {
   const [isPacked, setIsPacked] = useState(false);
   const {currentOrder}=useContext(OrderContext);
   const [isImageModalOpen, setIsImageModalOpen]= useState(false)
+  
 
   const handleItemPacked = () => {
     setNumberOfProductsPacked(numberOfProductsPacked + 1);

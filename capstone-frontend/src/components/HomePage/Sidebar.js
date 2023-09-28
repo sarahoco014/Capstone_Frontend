@@ -119,7 +119,7 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar backgroundColor="#A9B47A">
+        <Toolbar >
           <IconButton
             color="inherit"
             aria-label="open drawer"

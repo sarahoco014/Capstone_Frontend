@@ -261,7 +261,70 @@
     border : 4px solid #A9B47A ;
 }
 
-
+/* Modal Container */
+.confirm-modal {
+    display: block;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* confirm-modal Content */
+  .confirm-modal-content {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    max-width: 80%;
+    overflow-y: auto;
+    width: 400px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+  /* Close Button */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+  }
+  .close:hover {
+    color: #333;
+  }
+  
+  .iframe {
+    position: relative;
+    width: auto; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+  }
+  
+  .iframe iframe {
+    width: auto;
+    height: auto;
+  }
+  
+  .iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: auto; /* Capture clicks */
+    z-index: 4; /* Ensure it covers the iframe */
+  }
 
 
 

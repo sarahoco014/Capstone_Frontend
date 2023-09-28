@@ -11,12 +11,10 @@ const Order = ({ order, updateOrderStatus, truckList }) => {
     console.log("handling pack order button");
     setCurrentOrder(order);
     if(order.status ==="UNFULFILLED" || order.status ==="ONHOLD"){
-      console.log("hello")
     const truckId = assignTruck();
     updateOrderStatus(order.id, truckId, "ONGOING");}
   };
 
-  console.log(truckList);
 
   const calculateProductsSumSize = (orderToCalculate) => {
     let total = 0;

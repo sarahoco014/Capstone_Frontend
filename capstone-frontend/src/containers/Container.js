@@ -17,7 +17,6 @@ const Container = () => {
         const response = await fetch("http://localhost:8080/orders")
         const data = await response.json();
         setOrderList(data);
-        console.log(data)
     }
 
     const fetchEmployee = async () => {
@@ -42,7 +41,8 @@ const Container = () => {
                                             
                                         })
         fetchAllOrders();
-    }
+        console.log("currentOrder:" + currentOrder);
+        }
 
     const decreaseStockLevel = async () => {
         const response = await fetch(`http://localhost:8080/products/decreaseStockLevel?orderId=${currentOrder.id}`,

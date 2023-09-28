@@ -3,6 +3,7 @@ import Product from "./Product";
 import { OrderContext } from "../../containers/Container";
 import { useNavigate } from "react-router-dom";
 import "./OrderPage.css"
+import ConfirmOrderModal from "./ConfirmOrderModal";
 
 const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
   const { currentOrder, setCurrentOrder } = useContext(OrderContext);
@@ -10,6 +11,7 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
   const [isOrderComplete, setIsOrderComplete] = useState(false);
   const navigate = useNavigate();
   const [sortedProductList, setSortedProductList] = useState([])
+  const [isConfirmModalOpen, setIsConfirmModalOpen]= useState(false);
 
 
   const sortProductList = () =>{ 
@@ -84,10 +86,11 @@ const ProductList = ({updateOrderStatus, decreaseStockLevel}) => {
       {mappedProducts}
       <div className="confirm-tags">
       {isOrderComplete ? (
-        <div className="confirm-order-button"><button className="confirm-order" onClick={() => handleConfirmOrder()} style={{"color":"#FF8A61"}}>Confirmed</button></div>
+        <div className="confirm-order-button"><button className="confirm-order" onClick={() => setIsConfirmModalOpen(true)} style={{"color":"#FF8A61"}}>Confirmed</button></div>
       ) : (
         <p className="confirm-order" style={{"background-color":"#A9B47A"}}>Please pack all the products</p>
       )}</div>
+      {isConfirmModalOpen && (<ConfirmOrderModal setIsConfirmModalOpen={setIsConfirmModalOpen} handleConfirmOrder={handleConfirmOrder}/>)}
     </>
   );
 };
