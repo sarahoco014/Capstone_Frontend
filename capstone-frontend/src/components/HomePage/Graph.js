@@ -50,11 +50,6 @@ const Graph = ({orderList}) => {
         }
     };
 
-   
-
-
-
-
     return (
        <div> <Doughnut data={data} options={options}/> </div>
     )

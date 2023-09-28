@@ -20,7 +20,8 @@ const OrderPage = ({orderList, updateOrderStatus, decreaseStockLevel}) => {
 
     return(
     <div>
-        <p className="order-id">Order Id : {Number(id)} </p>
+        <h1 className="order-id">Current Order : {Number(id)} </h1>
+        <hr/>
           {/* <div className="order-and-truck-id" >
             {foundOrder ? (<p className="order-id">Order Id : {foundOrder.id} </p>):(<p>Loading...</p>)} 
             {foundOrder? (<p className="truck-id">Assigned&nbsp;Truck {foundOrder.truck.id}</p>):

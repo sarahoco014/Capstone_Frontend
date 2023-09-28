@@ -55,8 +55,8 @@ const Order = ({ order, updateOrderStatus, truckList }) => {
   return (
     <>
       <h4 className="order-number-tag">Order Number : {order.id}</h4>
-      <p className="number-of-products">Number of Products : {order.products.length}</p>
-      <p className="date-placed-tag">Date Placed : {order.date}</p>
+      <p className="number-of-products">Number&nbsp;of&nbsp;Products&nbsp;:&nbsp;{order.products.length}</p>
+      <p className="date-placed-tag">Date&nbsp;Placed&nbsp;:{order.date}</p>
       {order.orderPriority ? <p className="priority-tag">Priority</p> :<p className="non-priority-tag">Non-Priority</p>}
       {order.status !== "FINISHED" ? (
         <Link to={`/OrderPage/${order.id}`}>

@@ -38,9 +38,14 @@ const OrderList = ({orderList, updateOrderStatus, truckList}) => {
 
 
     return(
+        <div>
+            <h1 className="all-orders-header">All Orders</h1>
+            <hr/>
         <div className="all-orders-box">
             {mappedOrders}
         </div>
+        </div>
+        
     );
 
     

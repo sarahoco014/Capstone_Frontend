@@ -115,6 +115,15 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
   const theme = useTheme();
   const { currentOrder } = useContext(OrderContext);
 
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    }, 50);
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -180,6 +189,7 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
                 color: "inherit",
               }}
               to="/"
+              onClick={scrollToBottom}
             >
               Trucks
             </Link>,
@@ -241,6 +251,7 @@ function Sidebar({ open, handleDrawerClose, handleDrawerOpen }) {
                         color: "inherit",
                       }}
                       to="/"
+                      onClick={scrollToBottom}
                     >
                       <LocalShippingOutlinedIcon />
                     </Link>
